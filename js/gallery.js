@@ -86,15 +86,7 @@ function addGalleryTemplate(images) {
 
 function render() {
     const markup = addGalleryTemplate(images);
-    gallery.innerHTML = markup;
-
-    const galleryLinks = document.querySelectorAll(".gallery-link");
-    galleryLinks.forEach(link => {
-        link.addEventListener("click", function (e) {
-            e.preventDefault();
-        });
-    });
-    
+    gallery.innerHTML = markup; 
 }
 
 render();
@@ -102,7 +94,8 @@ render();
 let modalOpen = false;
 
 gallery.addEventListener("click", e => {
-    if (e.target === e.currentTarget) return;
+    e.preventDefault();
+    if (e.target.nodeName !== 'IMG') return;                      //if (e.target === e.currentTarget) return;
     const previewLink = e.target.getAttribute('data-source');
     const instance = basicLightbox.create(`
     <img src="${previewLink}" width="1112" height="640">`,
