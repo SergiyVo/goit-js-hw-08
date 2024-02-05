@@ -95,7 +95,7 @@ let modalOpen = false;
 
 gallery.addEventListener("click", e => {
     e.preventDefault();
-    if (e.target.nodeName !== 'IMG') return;                      //if (e.target === e.currentTarget) return;
+    if (e.target.nodeName !== 'IMG') return;                      
     const previewLink = e.target.getAttribute('data-source');
     const instance = basicLightbox.create(`
     <img src="${previewLink}" width="1112" height="640">`,
